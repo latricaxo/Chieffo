@@ -1,0 +1,173 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile details",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase user ID" },
+        "name": { "type": "string", "description": "User display name" },
+        "email": { "type": "string", "description": "User email address" },
+        "profileImage": { "type": "string", "description": "Profile picture URL" },
+        "createdAt": { "type": "string", "description": "Account creation ISO timestamp" },
+        "lastLogin": { "type": "string", "description": "Last sign-in ISO timestamp" }
+      },
+      "required": ["uid", "name"]
+    },
+    "UserSettings": {
+      "title": "UserSettings",
+      "description": "User preferences and setup status",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "User ID" },
+        "notificationsEnabled": { "type": "boolean", "description": "Whether notifications are enabled" },
+        "onboardingComplete": { "type": "boolean", "description": "Onboarding completion flag" }
+      },
+      "required": ["userId"]
+    },
+    "BusinessProfile": {
+      "title": "BusinessProfile",
+      "description": "User business metadata",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "businessName": { "type": "string", "description": "Business company name" },
+        "businessType": { "type": "string", "description": "Type of business" },
+        "monthlyRevenueRange": { "type": "string", "description": "Estimated monthly revenue bracket" },
+        "financeManagementMethod": { "type": "string", "description": "Current accounting tool" },
+        "businessGoal": { "type": "string", "description": "Primary financial objective" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["userId", "businessName"]
+    },
+    "ExpenseItem": {
+      "title": "ExpenseItem",
+      "description": "Tracked business expense",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "businessId": { "type": "string", "description": "Business ID" },
+        "category": { "type": "string", "description": "Expense category" },
+        "description": { "type": "string", "description": "Description of expense" },
+        "amount": { "type": "number", "description": "Dollar amount" },
+        "date": { "type": "string", "description": "Date of transaction" },
+        "isRecurring": { "type": "boolean", "description": "Recurring flag" },
+        "createdAt": { "type": "string", "description": "Timestamp created" }
+      },
+      "required": ["userId", "category", "amount", "date"]
+    },
+    "IncomeItem": {
+      "title": "IncomeItem",
+      "description": "Tracked business revenue",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "businessId": { "type": "string", "description": "Business ID" },
+        "source": { "type": "string", "description": "Client or income source" },
+        "amount": { "type": "number", "description": "Amount received" },
+        "date": { "type": "string", "description": "Date received" },
+        "category": { "type": "string", "description": "Income category" },
+        "notes": { "type": "string", "description": "Notes" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["userId", "source", "amount", "date"]
+    },
+    "InvoiceItem": {
+      "title": "InvoiceItem",
+      "description": "Client invoice record",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "businessId": { "type": "string", "description": "Business ID" },
+        "clientName": { "type": "string", "description": "Client name" },
+        "amount": { "type": "number", "description": "Invoice dollar amount" },
+        "status": { "type": "string", "description": "draft, sent, paid, overdue" },
+        "dueDate": { "type": "string", "description": "Payment due date" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["userId", "clientName", "amount", "status", "dueDate"]
+    },
+    "ReceiptItem": {
+      "title": "ReceiptItem",
+      "description": "Scanned receipt item",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "businessId": { "type": "string", "description": "Business ID" },
+        "vendor": { "type": "string", "description": "Vendor name" },
+        "amount": { "type": "number", "description": "Total receipt amount" },
+        "date": { "type": "string", "description": "Receipt date" },
+        "category": { "type": "string", "description": "Category" },
+        "imageUrl": { "type": "string", "description": "Image URL or data URI" },
+        "status": { "type": "string", "description": "parsed or pending" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["userId", "vendor", "amount", "date"]
+    },
+    "FinancialInsightItem": {
+      "title": "FinancialInsightItem",
+      "description": "AI CFO insight recommendation",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "title": { "type": "string", "description": "Insight headline" },
+        "description": { "type": "string", "description": "Actionable advice" },
+        "type": { "type": "string", "description": "warning, positive, recommendation, opportunity" },
+        "priority": { "type": "string", "description": "high, medium, low" },
+        "date": { "type": "string", "description": "Date generated" },
+        "read": { "type": "boolean", "description": "Read flag" }
+      },
+      "required": ["userId", "title", "description", "type", "priority"]
+    },
+    "AIMemoryItem": {
+      "title": "AIMemoryItem",
+      "description": "Persistent memory item for AI CFO context",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "category": { "type": "string", "description": "Memory category" },
+        "content": { "type": "string", "description": "Content of the memory" },
+        "createdAt": { "type": "string", "description": "Timestamp" }
+      },
+      "required": ["userId", "category", "content"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User account profiles"
+    },
+    "/settings/{settingId}": {
+      "schema": "UserSettings",
+      "description": "User preferences and onboarding status"
+    },
+    "/businesses/{businessId}": {
+      "schema": "BusinessProfile",
+      "description": "Registered businesses"
+    },
+    "/expenses/{expenseId}": {
+      "schema": "ExpenseItem",
+      "description": "Expenses logged by users"
+    },
+    "/incomes/{incomeId}": {
+      "schema": "IncomeItem",
+      "description": "Incomes logged by users"
+    },
+    "/invoices/{invoiceId}": {
+      "schema": "InvoiceItem",
+      "description": "Invoices created by users"
+    },
+    "/receipts/{receiptId}": {
+      "schema": "ReceiptItem",
+      "description": "Receipts scanned and stored"
+    },
+    "/financialInsights/{insightId}": {
+      "schema": "FinancialInsightItem",
+      "description": "AI generated financial insights"
+    },
+    "/businessMemory/{memoryId}": {
+      "schema": "AIMemoryItem",
+      "description": "AI CFO long-term conversational memory"
+    }
+  }
+}

@@ -63,7 +63,7 @@ Provide an executive CFO assessment and recommendations tailored specifically to
 `;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.6-flash',
+      model: 'gemini-3.8-flash',
       contents: contextPrompt,
       config: {
         systemInstruction: CFO_SYSTEM_INSTRUCTION,
@@ -126,7 +126,7 @@ Respond ONLY in valid JSON matching this schema:
 `;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.6-flash',
+      model: 'gemini-3.8-flash',
       contents: prompt,
       config: {
         responseMimeType: 'application/json',
@@ -167,7 +167,7 @@ Extract transaction metadata from this receipt image. Return ONLY valid JSON:
     const cleanBase64 = imageBase64.replace(/^data:image\/\w+;base64,/, '');
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.6-flash',
+      model: 'gemini-3.8-flash',
       contents: [
         {
           inlineData: {
@@ -234,7 +234,7 @@ Respond strictly with valid JSON conforming to this schema:
 `;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.6-flash',
+      model: 'gemini-3.8-flash',
       contents: prompt,
       config: {
         responseMimeType: 'application/json',

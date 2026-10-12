@@ -20,6 +20,7 @@ interface NavbarProps {
   activeTab: 'landing' | 'pricing' | 'dashboard' | 'chat' | 'expenses' | 'invoices' | 'taxes';
   setActiveTab: (tab: 'landing' | 'pricing' | 'dashboard' | 'chat' | 'expenses' | 'invoices' | 'taxes') => void;
   onLoginClick: () => void;
+  onGuestLoginClick?: () => void;
   onLogoutClick: () => void;
 }
 
@@ -29,6 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   setActiveTab,
   onLoginClick,
+  onGuestLoginClick,
   onLogoutClick,
 }) => {
   return (
@@ -192,12 +194,20 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             </div>
           ) : (
-            <button
-              onClick={onLoginClick}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-extrabold shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <span>Sign In</span>
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={onGuestLoginClick}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-200 hover:text-white text-xs font-semibold border border-white/10 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span>Guest Sign In</span>
+              </button>
+              <button
+                onClick={onLoginClick}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-extrabold shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span>Sign In</span>
+              </button>
+            </div>
           )}
         </div>
 
